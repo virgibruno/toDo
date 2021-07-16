@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./styles/login.css">
+  <title>ToDo</title>
+</head>
+<body>
+
+  <form method="post" action="lista-tareas.html" id="registro">
+    <h1>Nueva cuenta</h1>
+
+    <!--<div class="image"></div>-->
+
+    <label>
+      Nombre:
+      <input type="text" id="nombre">
+      <small id="error-nombre"></small>
+    </label>
+    <label>
+      Apellido:
+      <input type="text" id="apellido">
+      <small id="error-apellido"></small>
+    </label>
+    <label>
+      Email:
+      <input type="text" id="emailRegistro">
+      <small id="error-email"></small>
+    </label>
+    <label>
+      Contraseña:
+      <input type="password" id="passwordRegistro">
+      <small id="error-pass"></small>
+    </label>
+    <label>
+      Repetir contraseña:
+      <input type="password" id="password-2">
+      <small id="error-pass2"></small>
+    </label>
+
+    <label class="checkbox">
+      <input type="checkbox" class="checkbox">
+      Mantener sesión iniciada
+    </label>
+
+    <small id="errorRegistro"></small>
+
+    <button type="submit">Crear Cuenta</button>
+    <button><a href="login.html">¿Ya tenés cuenta? Ingresá acá</a></button>
+
+    <div class="form-footer">
+      <p>ToDo</p>
+    </div>
+  </form>
+  
+  <script src="./scripts/registro.js"></script>
+</body>
+</html>
