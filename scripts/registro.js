@@ -44,7 +44,7 @@ window.addEventListener("load", e=>{
     // redirigir a página de tareas si ya está la sesión iniciada
     if (sessionStorage.getItem("clave") !== null || localStorage.getItem("clave") !== null) {
         e.preventDefault();
-        location.href = "./lista-tareas.html"
+        location.href = "./index.html"
     }
 
     // capturar formulario
@@ -172,7 +172,7 @@ window.addEventListener("load", e=>{
                         errorRegistro.innerHTML = result;
                     } else {                 
                         mantenerIniciada.value == "on" ? sessionStorage.setItem("clave", JSON.stringify(result)) : localStorage.setItem("clave", JSON.stringify(result));
-                        location.href = "lista-tareas.html";
+                        location.href = "index.html";
                     }  
                 })
                 .catch(error=> console.log(error))

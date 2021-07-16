@@ -36,7 +36,7 @@ window.addEventListener("load", ()=> {
                         errorLogin.innerHTML = result;
                     } else {                 
                         mantenerIniciada.value == "on" ? sessionStorage.setItem("clave", JSON.stringify(result)) : localStorage.setItem("clave", JSON.stringify(result));
-                        location.href = "lista-tareas.html";
+                        location.href = "index.html";
                     }  
                 })
                 .catch(error=> console.log(error))
