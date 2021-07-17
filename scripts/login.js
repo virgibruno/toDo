@@ -35,7 +35,7 @@ window.addEventListener("load", ()=> {
                     if(typeof result === "string") {
                         errorLogin.innerHTML = result;
                     } else {                 
-                        mantenerIniciada.value == "on" ? sessionStorage.setItem("clave", JSON.stringify(result)) : localStorage.setItem("clave", JSON.stringify(result));
+                        mantenerIniciada.value == "on" ? localStorage.setItem("clave", JSON.stringify(result)) : sessionStorage.setItem("clave", JSON.stringify(result));
                         location.href = "index.html";
                     }  
                 })
