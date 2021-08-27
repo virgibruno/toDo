@@ -41,6 +41,7 @@ form:after {
   justify-content: center;
   align-items: center;
 }
+
 .image i {
   font-size: 4em;
   color : var(--primary);

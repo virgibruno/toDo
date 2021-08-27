@@ -26,6 +26,7 @@ window.addEventListener("load", e => {
     const tareasTerminadas = document.querySelector(".tareas-terminadas");
     const enviarNvaTarea = document.querySelector("form.nueva-tarea");
     const nuevaTarea = document.querySelector("#textNuevaTarea");
+    const cerrarSesion = document.querySelector("#cerrar-sesion");
 
 
     /* -------------------------------------------
@@ -34,13 +35,13 @@ window.addEventListener("load", e => {
 
     fetch(`${baseURL}/tasks`, {
         method : "GET",
-        headers : headers 
+        headers : headers
     })
         .then(response => response.json())
         .then(listaTareas => {
             if(typeof listaTareas === "string") {
                 alert("Error en sistema. Vuelva a ingresar");
-                //location.href="./login.html";
+                location.href="./login.html";
             }
             if (listaTareas.length === 0){
                 tareasPendientes.innerHTML = `<h2>Acá aparecerán tus tareas pendientes</h2>`;
@@ -54,7 +55,7 @@ window.addEventListener("load", e => {
                         let elemento = e.srcElement
                         elemento.innerHTML = `
                             <form class="modificar-tarea">
-                                <input type="text" value="${elemento.innerText}" class="textTareaModificada">
+                                <input type="text" value="${elemento.innerText}" class="textTareaModificada" autofocus="autofocus">
                             </form>
                         `
                         console.log(elemento)
@@ -87,6 +88,18 @@ window.addEventListener("load", e => {
                 enviarNvaTarea.reset();
             })
         };
+    })
+
+    /* -------------------------------------------
+        Cerrar sesión
+    ------------------------------------------- */
+    
+    cerrarSesion.addEventListener("click", e =>{
+        if(confirm('¿Quiere cerrar sesión?')){
+            localStorage.clear();
+            sessionStorage.clear();
+            location.href="./login.html";
+        }
     })
     
             
@@ -143,7 +156,7 @@ window.addEventListener("load", e => {
         habilitarBotonesEliminacion();
     }
 
-    // Habilita mostrones para cambiar de pendientes a terminadas y viceversa: captura todos los botones y los pone en escucha, al apretarlos se obtiene la tarea seleccionada (el elemento completo y la descripcion como string). Luego se la elimina del lugar donde está y se la renderiza nuevamente. Por último se envía la información a la api.
+    // Habilita botones para cambiar de pendientes a terminadas y viceversa: captura todos los botones y los pone en escucha, al apretarlos se obtiene la tarea seleccionada (el elemento completo y la descripcion como string). Luego se la elimina del lugar donde está y se la renderiza nuevamente. Por último se envía la información a la api.
     function habilitarBotonesEstado() {
         let botones = document.querySelectorAll(".cambiarEstado");
         for (btn of botones) {
@@ -170,7 +183,7 @@ window.addEventListener("load", e => {
         }
     }
 
-    // Habilita mostrones para eliminar tareas: captura todos los botones y los pone en escucha, al apretarlos se obtiene la tarea seleccionada y se la elimina del lugar donde está. Por último se envía la información a la api.
+    // Habilita botones para eliminar tareas: captura todos los botones y los pone en escucha, al apretarlos se obtiene la tarea seleccionada y se la elimina del lugar donde está. Por último se envía la información a la api.
     function habilitarBotonesEliminacion() {
         let botones = document.querySelectorAll(".eliminar");
         for (btn of botones) {

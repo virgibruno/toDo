@@ -3,7 +3,14 @@ const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"
 let jwt;
 
 
-window.addEventListener("load", ()=> {
+window.addEventListener("load", event => {
+
+    // redirigir a página de tareas si ya está la sesión iniciada
+    if (sessionStorage.getItem("clave") !== null || localStorage.getItem("clave") !== null) {
+        event.preventDefault();
+        location.href = "./index.html"
+    }
+
     // capturar elementos formulario
     const formularioLogin = document.querySelector("#login");
     const password = document.querySelector("#password");
